@@ -17,15 +17,13 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
   
-  login(model: User){
+  login(model: any){
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSouce.next(user);
+          this.setCurrentUser(user);
         }
-        return this.currentUser$;
       })
     )
   }
@@ -34,14 +32,14 @@ export class AccountService {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSouce.next(user);
+          this.setCurrentUser(user);
         }
       })
     )
   }
 
   setCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSouce.next(user);
   }
 
