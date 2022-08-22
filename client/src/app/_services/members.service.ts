@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map, of, pipe, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
-import { PaginatedResult } from '../_models/pagination';
 import { User } from '../_models/user';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
@@ -63,7 +62,7 @@ export class MembersService {
   getMember(username: string) {
     const member = [...this.memberCache.values()]
     .reduce((arr, elem) => arr.concat(elem.result), [])
-    .find((members: Member) => member.username === username);
+    .find((member: Member) => member.username === username);
 
     if (member) {
       return of(member);
@@ -98,6 +97,6 @@ export class MembersService {
     return getPaginatedResult<Partial<Member[]>>(this.baseUrl + 'likes', params, this.http);
   }
   
-  
+ 
 
 }
