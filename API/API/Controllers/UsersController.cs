@@ -40,7 +40,7 @@ namespace API.Controllers
             if (string.IsNullOrEmpty(userParams.Gender))
                 userParams.Gender = user.Gender == "male" ? "female" : "male";
             var users = await _userRepository.GetMembersAsync(userParams);
-
+            //users.Where(e => e.Username != User.GetUsername()).ToList();
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize,
                 users.TotalCount, users.TotalPages);
 
