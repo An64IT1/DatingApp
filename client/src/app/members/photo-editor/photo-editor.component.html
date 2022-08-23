@@ -12,7 +12,7 @@
                 [disabled]="photo.isMain"
                 (click)="deletePhoto(photo.id)"
                 class="btn btn-sm btn-danger"
-            ><i class="fa fa-bug"></i></button>
+            ><i class="fa fa-trash"></i></button>
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
              (fileOver)="fileOverBase($event)"
              [uploader]="uploader"
              class="card bg-faded p-3 text-center mb-3 my-drop-zone">
-             <i class="fa fa-bug fa-3x"></i>
+             <i class="fa fa-upload fa-3x"></i>
             Drop photos here
         </div>
 
@@ -61,21 +61,21 @@
         <div>
             <div>
                 Queue progress:
-                <div class="progress" style="">
+                <div class="progress">
                     <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                 </div>
             </div>
             <button type="button" class="btn btn-success btn-s"
                     (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                <span class="fa fa-bug"></span> Upload all
+                <span class="fa fa-upload"></span> Upload all
             </button>
             <button type="button" class="btn btn-warning btn-s"
                     (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                <span class="fa fa-bug"></span> Cancel all
+                <span class="fa fa-ban"></span> Cancel all
             </button>
             <button type="button" class="btn btn-danger btn-s"
                     (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                <span class="fa fa-bug"></span> Remove all
+                <span class="fa fa-trash"></span> Remove all
             </button>
         </div>
 
